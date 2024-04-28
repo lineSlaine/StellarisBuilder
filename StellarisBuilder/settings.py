@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     # debug-toolbar
     # 'debug_toolbar',
     # project apps
+    'django_cleanup.apps.CleanupConfig',
+    'apps.user',
 ]
 
 INTERNAL_IPS = [
@@ -132,4 +134,8 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Users
+
+AUTH_USER_MODEL = 'user.User'
 
