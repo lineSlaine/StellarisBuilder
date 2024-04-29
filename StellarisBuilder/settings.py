@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # debug-toolbar
     # 'debug_toolbar',
+
+    'rest_framework',
     # project apps
     'django_cleanup.apps.CleanupConfig',
     'apps.user',
