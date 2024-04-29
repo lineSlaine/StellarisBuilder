@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     # project apps
     'django_cleanup.apps.CleanupConfig',
     'apps.user',
+    'apps.StellarisSave',
 ]
 
 INTERNAL_IPS = [
