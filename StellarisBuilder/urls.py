@@ -19,10 +19,10 @@ from rest_framework import routers
 from django.urls import path, include
 from django.conf import settings
 
-from apps.user.views import UserStellarisSaveListApiView
+# from apps.user.views import UserStellarisSaveListApiView
 
 router = routers.DefaultRouter()
-router.register(r'api/stellaris/saves', UserStellarisSaveListApiView)
+# router.register(r'api/stellaris/saves', UserStellarisSaveListApiView)
 
 urlpatterns = [
     path('admin/', admin.site.urls),

@@ -1,8 +1,8 @@
 from django.contrib import admin
 
-from apps.user.models import User, SaveListStellaris
+from apps.user.models import User
 
 # Register your models here.
 
 admin.site.register(User)
-admin.site.register(SaveListStellaris)
+# admin.site.register(SaveListStellaris)

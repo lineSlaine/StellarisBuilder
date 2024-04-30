@@ -131,6 +131,7 @@ class Color(models.Model):
 
 class StellarisSave(models.Model):
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    name = models.CharField(max_length=100, default="My Empire", null=False, blank=False)
 
     backgroundId = models.ForeignKey(Background, on_delete=models.CASCADE)
     flag = models.ForeignKey(Flag, on_delete=models.CASCADE)
@@ -149,3 +150,5 @@ class StellarisSave(models.Model):
     ethos = models.CharField(max_length=100, null=False, blank=False)  # [1,2,3,4]
     civic = models.CharField(max_length=100)  # [1,2,3,4]
     gene = models.CharField(max_length=100)  # [1,2,3,4]
+    def __str__(self):
+        return f"{self.user_id.username}'s {self.name}"
