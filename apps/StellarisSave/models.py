@@ -15,7 +15,7 @@ class PlanetType(models.Model):
 class Planet(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField(default="description", null=False, blank=False)
-    image = models.ImageField(upload_to='images/stellaris/planet/')
+    image = models.ImageField(upload_to='static/images/stellaris/planet/')
     type = models.ForeignKey(PlanetType, on_delete=models.CASCADE)
 
     def __str__(self):
@@ -24,7 +24,7 @@ class Planet(models.Model):
 
 # Background
 class Background(models.Model):
-    image = models.ImageField(upload_to='images/stellaris/background/', )
+    image = models.ImageField(upload_to='static/images/stellaris/background/', null=False, blank=False)
 
 
 # IconFlag
@@ -33,7 +33,7 @@ class FlagType(models.Model):
 
 
 class Flag(models.Model):
-    image = models.ImageField(upload_to='images/stellaris/Flag/', )
+    image = models.ImageField(upload_to='static/images/stellaris/Flag/', null=False, blank=False)
     type = models.ForeignKey(FlagType, on_delete=models.CASCADE)
 
 
@@ -47,7 +47,7 @@ class RaceType(models.Model):
 
 class Race(models.Model):
     name = models.CharField(max_length=100)
-    image = models.ImageField(upload_to='images/stellaris/race/', )
+    image = models.ImageField(upload_to='static/images/stellaris/race/', null=False, blank=False)
     type = models.ForeignKey(to=RaceType, on_delete=models.CASCADE)
 
     def __str__(self):
@@ -56,14 +56,14 @@ class Race(models.Model):
 
 # Ship
 class ShipType(models.Model):
-    image = models.ImageField(upload_to='images/stellaris/ship/', )
+    image = models.ImageField(upload_to='static/images/stellaris/ship/', null=False, blank=False)
 
 
 # Origin
 class Origin(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField(default="description")
-    image = models.ImageField(upload_to='images/stellaris/origin/', )
+    image = models.ImageField(upload_to='static/images/stellaris/origin/', null=False, blank=False)
     effect = models.TextField(default="effect", null=False, blank=False)
     requirement = models.TextField(default="requirement", null=False, blank=False)
 
@@ -75,7 +75,7 @@ class Origin(models.Model):
 class Government(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField(default="description")
-    image = models.ImageField(upload_to='images/stellaris/government/', )
+    image = models.ImageField(upload_to='static/images/stellaris/government/', null=False, blank=False)
     effect = models.TextField(default="effect", null=False, blank=False)
     requirement = models.TextField(default="requirement", null=False, blank=False)
 
@@ -87,7 +87,7 @@ class Government(models.Model):
 class Civic(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField(default="description")
-    icon = models.ImageField(upload_to='images/stellaris/civic/', )
+    image = models.ImageField(upload_to='static/images/stellaris/civic/', null=False, blank=False)
     effect = models.TextField(default="effect", null=False, blank=False)
     requirement = models.TextField(default="requirement", null=False, blank=False)
 
@@ -95,9 +95,10 @@ class Civic(models.Model):
         return self.name
 
 
-# Ethos
-class Ethos(models.Model):
+# Ethics
+class Ethic(models.Model):
     name = models.CharField(max_length=100)
+    image = models.ImageField(upload_to='static/images/stellaris/ethic/', null=False, blank=False)
     description = models.TextField(default="description", )
     effect = models.TextField(default="effect", )
     cost = models.PositiveIntegerField(default=0)
@@ -110,7 +111,7 @@ class Ethos(models.Model):
 class Gene(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField(default="description")
-    image = models.ImageField(upload_to='images/stellaris/gene/', )
+    image = models.ImageField(upload_to='static/images/stellaris/gene/', )
     effect = models.TextField(default="effect", null=False, blank=False)
     requirement = models.TextField(default="requirement", null=False, blank=False)
     cost = models.IntegerField(default=0)
@@ -147,8 +148,9 @@ class StellarisSave(models.Model):
 
     origin = models.ForeignKey(Origin, on_delete=models.CASCADE)
     government = models.ForeignKey(Government, on_delete=models.CASCADE)
-    ethos = models.CharField(max_length=100, null=False, blank=False)  # [1,2,3,4]
+    ethic = models.CharField(max_length=100, null=False, blank=False)  # [1,2,3,4]
     civic = models.CharField(max_length=100)  # [1,2,3,4]
     gene = models.CharField(max_length=100)  # [1,2,3,4]
+
     def __str__(self):
         return f"{self.user_id.username}'s {self.name}"
