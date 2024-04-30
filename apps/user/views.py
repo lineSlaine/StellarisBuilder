@@ -8,6 +8,7 @@ from apps.user.serializers import SaveListStellarisSerializer
 # Create your views here.
 
 class UserStellarisSaveListApiView(viewsets.ModelViewSet):
+
     serializer_class = SaveListStellarisSerializer
     queryset = SaveListStellaris.objects.all()
     # def get_queryset(self):
