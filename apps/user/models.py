@@ -8,5 +8,6 @@ class User(AbstractUser):
 
 
 class SaveListStellaris(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    save = models.AutoField(primary_key=True)
+    save_id = models.AutoField(primary_key=True,)
+    user = models.ForeignKey(to=User, on_delete=models.CASCADE)
+    name = models.CharField(max_length=120, default='My Empire')
