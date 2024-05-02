@@ -7,10 +7,5 @@ from rest_framework import viewsets
 
 # # Create your views here.
 
-# class UserStellarisSaveListApiView(viewsets.ModelViewSet):
-
-#     serializer_class = SaveListStellarisSerializer
-#     queryset = SaveListStellaris.objects.all()
-    # def get_queryset(self):
-    #     user = self.request.user
-    #     return SaveListStellaris.objects.filter(user=user.id)
+def indexPageView(request):
+    return render(request, 'index.html')

@@ -22,26 +22,27 @@ from django.conf import settings
 from apps.StellarisSave.views import *
 
 router = routers.DefaultRouter()
-router.register(r'api/stellaris/ethics', EthicView)
-router.register(r'api/stellaris/planet', PlanetView)
-router.register(r'api/stellaris/planet-type', PlanetTypeView)
-router.register(r'api/stellaris/background', BackgroundView)
-router.register(r'api/stellaris/flag', FlagView)
-router.register(r'api/stellaris/flag-type', FlagTypeView)
-router.register(r'api/stellaris/race', RaceView)
-router.register(r'api/stellaris/race-type', RaceTypeView)
-router.register(r'api/stellaris/ship', ShipTypeView)
-router.register(r'api/stellaris/origin', OriginView)
-router.register(r'api/stellaris/government', GovernmentView)
-router.register(r'api/stellaris/civic', CivicView)
-router.register(r'api/stellaris/gene', GeneView)
-router.register(r'api/stellaris/color', ColorView)
+router.register(r'stellaris/ethics', EthicView)
+router.register(r'stellaris/planet', PlanetView)
+router.register(r'stellaris/planet-type', PlanetTypeView)
+router.register(r'stellaris/background', BackgroundView)
+router.register(r'stellaris/flag', FlagView)
+router.register(r'stellaris/flag-type', FlagTypeView)
+router.register(r'stellaris/race', RaceView)
+router.register(r'stellaris/race-type', RaceTypeView)
+router.register(r'stellaris/ship', ShipTypeView)
+router.register(r'stellaris/origin', OriginView)
+router.register(r'stellaris/government', GovernmentView)
+router.register(r'stellaris/civic', CivicView)
+router.register(r'stellaris/gene', GeneView)
+router.register(r'stellaris/color', ColorView)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include(router.urls)),
+    path('api/', include(router.urls)),
+    path('', include('apps.user.urls', namespace='user')),
 ]
 
-# if settings.DEBUG:
-#  import debug_toolbar
-#   urlpatterns += (path('__debug__/', include(debug_toolbar.urls)),)
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns += (path('__debug__/', include(debug_toolbar.urls)),)
