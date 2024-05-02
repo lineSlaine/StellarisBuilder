@@ -19,10 +19,23 @@ from rest_framework import routers
 from django.urls import path, include
 from django.conf import settings
 
-from apps.StellarisSave.views import EthicView
+from apps.StellarisSave.views import *
 
 router = routers.DefaultRouter()
 router.register(r'api/stellaris/ethics', EthicView)
+router.register(r'api/stellaris/planet', PlanetView)
+router.register(r'api/stellaris/planet/type', PlanetTypeView)
+router.register(r'api/stellaris/background', BackgroundView)
+router.register(r'api/stellaris/flag', FlagView)
+router.register(r'api/stellaris/flag/type', FlagTypeView)
+router.register(r'api/stellaris/race', RaceView)
+router.register(r'api/stellaris/race/type', RaceTypeView)
+router.register(r'api/stellaris/ship', ShipTypeView)
+router.register(r'api/stellaris/origin', OriginView)
+router.register(r'api/stellaris/government', GovernmentView)
+router.register(r'api/stellaris/civic', CivicView)
+router.register(r'api/stellaris/gene', GeneView)
+router.register(r'api/stellaris/color', ColorView)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
