@@ -9,8 +9,13 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
-
+import os
+from dotenv import load_dotenv
 from pathlib import Path
+
+
+load_dotenv()
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -19,8 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-h@sa@&9j==bbsk6eaq1=e5+st#cdj6=)bsjw6*#%jumz%!8j_v'
-
+SECRET_KEY = str(os.getenv('SECRET_KEY'))
+DATABASE_PASS = str(os.getenv('DATABASE_PASS'))
+DATABASE_NAME = str(os.getenv('DATABASE_NAME'))
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -35,10 +41,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
     # debug-toolbar
     # 'debug_toolbar',
 
-    'rest_framework',
     # project apps
     'django_cleanup.apps.CleanupConfig',
     'apps.user',
@@ -88,9 +94,9 @@ WSGI_APPLICATION = 'StellarisBuilder.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'StellarisBuilderSite',
+        'NAME': DATABASE_NAME,
         'USER': 'postgres',
-        'PASSWORD': 'admin',
+        'PASSWORD': DATABASE_PASS,
         'HOST': 'localhost',
         'PORT': 5432,
     }
@@ -117,7 +123,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ru-RU'
 
 TIME_ZONE = 'UTC'
 
